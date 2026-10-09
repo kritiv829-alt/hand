@@ -25,7 +25,7 @@ function paginate(items, page = 1, pageSize = DEFAULT_PAGE_SIZE) {
   const total = items.length;
   const totalPages = Math.ceil(total / pageSize);
   const start = (page - 1) * pageSize;
-  const pageItems = items.slice(start, pageSize);
+  const pageItems = items.slice(start, start + pageSize);
 
   return {
     items: pageItems,
