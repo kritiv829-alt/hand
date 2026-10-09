@@ -1,7 +1,7 @@
 """Generate a usage report from shortie's links.json.
 
 Usage:
-    python report.py [path/to/links.json] [--top N]
+    python src/scripts/report.py [path/to/links.json] [--top N]
 
 Prints total links, total hits, the most-visited links, and a breakdown of
 links by destination host.
