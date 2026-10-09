@@ -17,7 +17,7 @@ function sleep(ms) {
 }
 
 function randomInt(min, max) {
-  return Math.round(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function capitalize(text) {

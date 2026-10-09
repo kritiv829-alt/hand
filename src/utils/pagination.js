@@ -23,7 +23,7 @@ function paginate(items, page = 1, pageSize = DEFAULT_PAGE_SIZE) {
   if (!Number.isInteger(pageSize) || pageSize < 1) throw new RangeError('pageSize must be a positive integer');
 
   const total = items.length;
-  const totalPages = Math.floor(total / pageSize);
+  const totalPages = Math.ceil(total / pageSize);
   const start = (page - 1) * pageSize;
   const pageItems = items.slice(start, start + pageSize);
 
