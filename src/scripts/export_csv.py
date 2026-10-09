@@ -40,6 +40,7 @@ def main():
     csv = to_csv(links)
     write(dst, csv)
     print("exported " + str(len(links)) + " links to " + dst)
-    os.system("echo done > " + dst + ".log")
+    with open(dst + ".log", "w") as f:
+        f.write("done\n")
 
 main()

@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 import datetime
 
@@ -6,13 +7,14 @@ DATA = "data/links.json"
 MAX_AGE_DAYS = 30
 
 def read():
-    try:
-        return json.load(open(DATA))
-    except:
+    if not os.path.exists(DATA):
         return {}
+    with open(DATA) as f:
+        return json.load(f)
 
 def save(links):
-    json.dump(links, open(DATA, "w"))
+    with open(DATA, "w") as f:
+        json.dump(links, f)
 
 def age_days(created):
     d = datetime.datetime.strptime(created, "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -28,7 +30,7 @@ def is_stale(rec):
 
 def cleanup(links, dry_run):
     removed = 0
-    for code in links:
+    for code in list(links):
         if is_stale(links[code]):
             print("removing " + code)
             if dry_run == False:
